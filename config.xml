@@ -1,14 +1,14 @@
 <UserScriptConfig>
-	<Script basedir="a" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="test script" enabled="true" filename="a.user.js" installTime="1400122040581" modified="1400254035244" name="iScript - Hello" namespace="" runAt="document-end" uuid="21b6ca26-bc38-45da-a005-63b972e05b5d" version="null" installurl="file:///C:/Users/Limin/Desktop/a.user.js" updateurl="file:///C:/Users/Limin/Desktop/a.user.js">
-		<Grant>none</Grant>
-		<Include>*</Include>
-	</Script>
 	<Script basedir="在新标签页打开链接" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="%E5%9C%A8%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%89%93%E5%BC%80%E9%93%BE%E6%8E.user.js" installTime="1400132929363" modified="1400238834999" name="iScript - 在新窗口打开链接" namespace="" runAt="document-end" uuid="b3b99e2f-06ea-4417-8464-57a301035d6a" version="null" installurl="file:///C:/Users/Limin/Desktop/%E5%9C%A8%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5.user.js" updateurl="file:///C:/Users/Limin/Desktop/%E5%9C%A8%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5.user.js">
 		<Grant>none</Grant>
 		<Include>*</Include>
 	</Script>
-	<Script basedir="iScript_-_土巴兔" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" installTime="1400139071488" modified="1400322929004" name="iScript - 土巴兔" namespace="" runAt="document-end" uuid="2e428e0b-c286-40bb-9227-605a806a4f3f" version="null" installurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" updateurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js">
+	<Script basedir="iScript_-_土巴兔" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" installTime="1400139071488" modified="1400340756551" name="iScript - 土巴兔" namespace="" runAt="document-end" uuid="2e428e0b-c286-40bb-9227-605a806a4f3f" version="null" installurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" updateurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js">
 		<Grant>none</Grant>
 		<Include>http://*.to8to.com/*</Include>
+	</Script>
+	<Script basedir="Test" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="Test.user.js" installTime="1400329404505" modified="1400340590145" name="Test" namespace="" runAt="document-end" uuid="43aae4f4-19ac-4da6-969c-52784bda90f3" version="null" installurl="file:///C:/Users/Limin/Desktop/Test.user.js" updateurl="file:///C:/Users/Limin/Desktop/Test.user.js">
+		<Grant>none</Grant>
+		<Include>*</Include>
 	</Script>
 </UserScriptConfig>
