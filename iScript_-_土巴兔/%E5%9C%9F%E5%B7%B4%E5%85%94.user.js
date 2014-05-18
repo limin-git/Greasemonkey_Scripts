@@ -85,13 +85,13 @@ window.full_screen_show_img = function(e)
        return;
     }
 
-    var window_type_list = ["wheel", "devicemotion", "deviceorientation", "deviceproximity", "userproximity", "devicelight", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "pointercancel", "pointerdown", "pointerup", "pointermove", "pointerout", "pointerover", "pointerenter", "pointerleave", "gotpointercapture", "lostpointercapture", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error", "afterprint", "beforeprint", "beforeunload", "hashchange", "languagechange", "message", "offline", "online", "pagehide", "pageshow", "popstate", "resize", "unload", "copy", "cut", "paste", "beforescriptexecute", "afterscriptexecute"];
+    var window_type_list = [ "mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "pageshow", "blur", "wheel", "beforeunload", "error", "pagehide", "keydown", "keypress", "resize", "keyup" ];
     for ( var i = 0; i < window_type_list.length; ++i )
     {
       window.addEventListener( window_type_list[i], full_screen_show_img, true );
     }
 
-    var document_type_list = ["readystatechange", "wheel", "copy", "cut", "paste", "beforescriptexecute", "afterscriptexecute", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error"];
+    var document_type_list = ["mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "readystatechange", "blur", "wheel", "keydown", "keypress", "keyup" ];
     for ( var i = 0; i < document_type_list.length; ++i )
     {
       document.addEventListener( document_type_list[i], full_screen_show_img, true );
@@ -104,7 +104,7 @@ window.full_screen_show_img = function(e)
       return;
     }
     
-    var div_type_list = ["copy", "cut", "paste", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error", "wheel"];
+    var div_type_list = ["load", "wheel", "mousedown", "mouseup", "click"];
     for ( var i = 0; i < div_type_list.length; ++i )
     {
       dis.addEventListener( div_type_list[i], full_screen_show_img, true );

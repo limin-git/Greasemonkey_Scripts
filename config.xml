@@ -3,12 +3,15 @@
 		<Grant>none</Grant>
 		<Include>*</Include>
 	</Script>
-	<Script basedir="iScript_-_土巴兔" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" installTime="1400139071488" modified="1400410732575" name="iScript - 土巴兔" namespace="" runAt="document-end" uuid="2e428e0b-c286-40bb-9227-605a806a4f3f" version="null" installurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" updateurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js">
+	<Script basedir="iScript_-_土巴兔" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" installTime="1400139071488" modified="1400419326759" name="iScript - 土巴兔" namespace="" runAt="document-end" uuid="2e428e0b-c286-40bb-9227-605a806a4f3f" version="null" installurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js" updateurl="file:///C:/Users/Limin/Desktop/%E5%9C%9F%E5%B7%B4%E5%85%94.user.js">
 		<Grant>none</Grant>
 		<Include>http://*.to8to.com/*</Include>
 	</Script>
-	<Script basedir="Test" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="Test.user.js" installTime="1400329404505" modified="1400400751374" name="Test" namespace="" runAt="document-end" uuid="43aae4f4-19ac-4da6-969c-52784bda90f3" version="null" installurl="file:///C:/Users/Limin/Desktop/Test.user.js" updateurl="file:///C:/Users/Limin/Desktop/Test.user.js">
-		<Grant>GM_getValue, GM_setValue</Grant>
+	<Script basedir="Test" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="Test.user.js" installTime="1400329404505" modified="1400421202912" name="Test" namespace="" runAt="document-end" uuid="43aae4f4-19ac-4da6-969c-52784bda90f3" version="null" installurl="file:///C:/Users/Limin/Desktop/Test.user.js" updateurl="file:///C:/Users/Limin/Desktop/Test.user.js">
+		<Grant>GM_getValue</Grant>
+		<Grant>GM_setValue</Grant>
+		<Grant>GM_listValues</Grant>
+		<Grant>GM_deleteValue</Grant>
 		<Include>*</Include>
 	</Script>
 </UserScriptConfig>
