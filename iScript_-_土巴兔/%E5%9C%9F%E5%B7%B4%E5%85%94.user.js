@@ -46,8 +46,15 @@ window.full_screen_show_img = function(e)
 
   if ( 0 == w || 0 == h ||  window_w == w || window_h == h )
   {
-    x.style.left = (window_w - w ) / 2 + "px";
-    x.style.top = (window_h - h ) / 2 + "px";
+    var target_left = (window_w - w ) / 2 + 'px';
+    var target_top = (window_h - h ) / 2 + "px";
+
+    if ( x.style.left != target_left || x.style.top != target_top )
+    {
+      x.style.left = target_left;
+      x.style.top = target_top;
+    }
+
     return;
   }
 
@@ -84,30 +91,33 @@ window.full_screen_show_img = function(e)
     {
        return;
     }
-
-    var window_type_list = [ "mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "pageshow", "blur", "wheel", "beforeunload", "error", "pagehide", "keydown", "keypress", "resize", "keyup" ];
-    for ( var i = 0; i < window_type_list.length; ++i )
-    {
-      window.addEventListener( window_type_list[i], full_screen_show_img, true );
-    }
-
-    var document_type_list = ["mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "readystatechange", "blur", "wheel", "keydown", "keypress", "keyup" ];
-    for ( var i = 0; i < document_type_list.length; ++i )
-    {
-      document.addEventListener( document_type_list[i], full_screen_show_img, true );
-    }
-
+    
     var dis = document.getElementById("dis");
     
     if ( null == dis )
     {
       return;
     }
-    
-    var div_type_list = ["load", "wheel", "mousedown", "mouseup", "click"];
-    for ( var i = 0; i < div_type_list.length; ++i )
+
+    var window_type_list = [ "mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "pageshow", "blur", "wheel", "beforeunload", "error", "pagehide", "keydown", "keypress", "resize", "keyup" ];
+    for ( var i = 0; i < window_type_list.length; ++i )
     {
-      dis.addEventListener( div_type_list[i], full_screen_show_img, true );
+      window.addEventListener( window_type_list[i], full_screen_show_img, true );
+      window.addEventListener( window_type_list[i], full_screen_show_img, false );
+    }
+
+    var document_type_list = ["mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "readystatechange", "blur", "wheel", "keydown", "keypress", "keyup" ];
+    for ( var i = 0; i < document_type_list.length; ++i )
+    {
+      document.addEventListener( document_type_list[i], full_screen_show_img, true );
+      document.addEventListener( document_type_list[i], full_screen_show_img, false );
+    }
+    
+    var dis_type_list = ["load", "wheel", "mousedown", "mouseup", "click"];
+    for ( var i = 0; i < dis_type_list.length; ++i )
+    {
+      dis.addEventListener( dis_type_list[i], full_screen_show_img, true );
+      dis.addEventListener( dis_type_list[i], full_screen_show_img, false );
     }
   }
 )();

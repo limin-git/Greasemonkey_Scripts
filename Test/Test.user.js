@@ -4,6 +4,8 @@
 // @grant       GM_setValue
 // @grant       GM_listValues
 // @grant       GM_deleteValue
+// @grant       GM_getResourceText
+// @resource    test_resource http://wiki.greasespot.net/GM_getResourceText
 // @include     *
 // ==/UserScript==
 
@@ -168,3 +170,15 @@ function delete_GM_values()
 
 //delete_GM_values();
 
+////////////////////////////////////////////
+//
+// delete_GM_values
+//
+////////////////////////////////////////////
+function main()
+{
+  //var x = GM_getResourceText( "test_resource" );
+  //console.log( x );
+}
+
+main();
