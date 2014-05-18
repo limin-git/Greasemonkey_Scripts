@@ -9,23 +9,32 @@
 // 放大图片
 //
 ///////////////////////////////////////////////
+var current_src = "";
+var current_rate = 0;
 window.full_screen_show_img = function(e)
 {
   //console.log(e.type);
 
-  var x = document.getElementById("show_img");
+  var x = document.getElementById( "show_img" );
 
   if ( x == null )
   {
      return;
   }
-
+  
   var w = x.width;
   var h = x.height;
   var window_w = window.innerWidth;
   var window_h = window.innerHeight;
 
-  if (x.style.position != "absolute" || x.style.margin != "0px" || x.style.padding != "0px")
+  // 记下最初的图片的比例
+  if ( x.src != current_src )
+  {
+    current_src = x.src;
+    current_rate = w / h;
+  }
+
+  if ( x.style.position != "absolute" || x.style.margin != "0px" || x.style.padding != "0px" )
   {
     x.style.position = "absolute";
     x.style.margin = "0px 0px 0px 0px";
@@ -44,21 +53,23 @@ window.full_screen_show_img = function(e)
 
   var rate = w / h;
   var window_rate = window_w / window_h;
-  var new_w = window_w;
-  var new_h = window_h;
+  var new_w = 0;
+  var new_h = 0;
 
   // 横向全屏
   if ( window_rate < rate )
   {
-    new_h = h * (window_w / w);
+    new_w = window_w;
+    new_h = window_w / current_rate;
   }
   // 纵向全屏
   else
   {
-    new_w = w * (window_h / h);
+    new_w = window_h * current_rate;
+    new_h = window_h;
   }
 
-  x.style.width =new_w + "px";
+  x.style.width = new_w + "px";
   x.style.height = new_h + "px";
   x.style.left = (window_w - new_w ) / 2 + "px";
   x.style.top = (window_h - new_h ) / 2 + "px";
@@ -66,36 +77,44 @@ window.full_screen_show_img = function(e)
   x.height = new_h;
 };
 
+// 添加事件句柄
 ( function()
- {   
-   if ( document.getElementById("show_img") == null )
-   {
+  {
+    if ( document.getElementById("show_img") == null )
+    {
+       return;
+    }
+
+    var window_type_list = ["wheel", "devicemotion", "deviceorientation", "deviceproximity", "userproximity", "devicelight", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "pointercancel", "pointerdown", "pointerup", "pointermove", "pointerout", "pointerover", "pointerenter", "pointerleave", "gotpointercapture", "lostpointercapture", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error", "afterprint", "beforeprint", "beforeunload", "hashchange", "languagechange", "message", "offline", "online", "pagehide", "pageshow", "popstate", "resize", "unload", "copy", "cut", "paste", "beforescriptexecute", "afterscriptexecute"];
+    for ( var i = 0; i < window_type_list.length; ++i )
+    {
+      window.addEventListener( window_type_list[i], full_screen_show_img, true );
+    }
+
+    var document_type_list = ["readystatechange", "wheel", "copy", "cut", "paste", "beforescriptexecute", "afterscriptexecute", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error"];
+    for ( var i = 0; i < document_type_list.length; ++i )
+    {
+      document.addEventListener( document_type_list[i], full_screen_show_img, true );
+    }
+
+    var dis = document.getElementById("dis");
+    
+    if ( null == dis )
+    {
       return;
-   }
-
-   var window_type_list = ["wheel", "devicemotion", "deviceorientation", "deviceproximity", "userproximity", "devicelight", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "pointercancel", "pointerdown", "pointerup", "pointermove", "pointerout", "pointerover", "pointerenter", "pointerleave", "gotpointercapture", "lostpointercapture", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error", "afterprint", "beforeprint", "beforeunload", "hashchange", "languagechange", "message", "offline", "online", "pagehide", "pageshow", "popstate", "resize", "unload", "copy", "cut", "paste", "beforescriptexecute", "afterscriptexecute"];
-   for ( var i = 0; i < window_type_list.length; ++i )
-   {
-     window.addEventListener( window_type_list[i], full_screen_show_img, true );
-   }
-
-   var document_type_list = ["readystatechange", "wheel", "copy", "cut", "paste", "beforescriptexecute", "afterscriptexecute", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error"];
-   for ( var i = 0; i < document_type_list.length; ++i )
-   {
-     document.addEventListener( document_type_list[i], full_screen_show_img, true );
-   }
-
-   var dis = document.getElementById("dis");
-   var div_type_list = ["copy", "cut", "paste", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error", "wheel"];
-   for ( var i = 0; i < div_type_list.length; ++i )
-   {
-     dis.addEventListener( div_type_list[i], full_screen_show_img, true );
-   }
- }
+    }
+    
+    var div_type_list = ["copy", "cut", "paste", "abort", "blur", "focus", "canplay", "canplaythrough", "change", "click", "contextmenu", "dblclick", "drag", "dragend", "dragenter", "dragleave", "dragover", "dragstart", "drop", "durationchange", "emptied", "ended", "input", "invalid", "keydown", "keypress", "keyup", "load", "loadeddata", "loadedmetadata", "loadstart", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup", "pause", "play", "playing", "progress", "ratechange", "reset", "scroll", "seeked", "seeking", "select", "show", "stalled", "submit", "suspend", "timeupdate", "volumechange", "waiting", "mozfullscreenchange", "mozfullscreenerror", "mozpointerlockchange", "mozpointerlockerror", "error", "wheel"];
+    for ( var i = 0; i < div_type_list.length; ++i )
+    {
+      dis.addEventListener( div_type_list[i], full_screen_show_img, true );
+    }
+  }
 )();
+
 ///////////////////////////////////////////////
 //
-// 打开效果图列表 Ctrl/Shift + Left Mouse
+// 打开列表 Ctrl/Shift + Left Mouse
 //
 ///////////////////////////////////////////////
 function open_all_links(e)
@@ -134,17 +153,6 @@ function open_all_links(e)
 }
 
 window.addEventListener("click", open_all_links, false);
-///////////////////////////////////////////////
-//
-// 关闭窗口
-//
-///////////////////////////////////////////////
-function close_window()
-{
-  window.opener = null;
-  window.open('', '_self');
-  window.close();
-}
 
 ///////////////////////////////////////////////
 //
@@ -201,7 +209,9 @@ function close_window_on_click_or_wheel(e)
 
   if ( is_close_window == true )
   {
-    close_window();
+    window.opener = null;
+    window.open('', '_self');
+    window.close();
   }
 }
 
