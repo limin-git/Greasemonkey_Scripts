@@ -170,9 +170,31 @@ function delete_GM_values()
 
 //delete_GM_values();
 
+///////////////////////////////////////////////
+//
+// 添加到集合
+//
+///////////////////////////////////////////////
+function add_to_set( name, new_value )
+{
+  var value = GM_getValue( name, "" );
+  
+  if ( value.search(new_value) == -1 )
+  {
+    if ( 0 == value.length )
+    {
+      GM_setValue( name, new_value );
+    }
+    else
+    {
+      GM_setValue( name, value + ", " + new_value );
+    }
+  }
+}
+
 ////////////////////////////////////////////
 //
-// delete_GM_values
+// main
 //
 ////////////////////////////////////////////
 function main()

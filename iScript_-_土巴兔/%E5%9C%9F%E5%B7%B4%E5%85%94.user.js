@@ -1,6 +1,9 @@
 // ==UserScript==
 // @name        iScript - 土巴兔
-// @grant       none
+// @grant       GM_getValue
+// @grant       GM_setValue
+// @grant       GM_listValues
+// @grant       GM_deleteValue
 // @include     http://*.to8to.com/*
 // ==/UserScript==
 
@@ -11,7 +14,8 @@
 ///////////////////////////////////////////////
 var current_src = "";
 var current_rate = 0;
-window.full_screen_show_img = function(e)
+
+function full_screen_show_img(e)
 {
   //console.log(e.type);
 
@@ -37,8 +41,8 @@ window.full_screen_show_img = function(e)
   if ( x.style.position != "absolute" || x.style.margin != "0px" || x.style.padding != "0px" )
   {
     x.style.position = "absolute";
-    x.style.margin = "0px 0px 0px 0px";
-    x.style.padding = "0px 0px 0px 0px";
+    x.style.margin = "0px";
+    x.style.padding = "0px";
     //console.log( "margin=%s, padding=%s, position=%s", x.style.margin, x.style.padding, x.style.position );
   }
 
@@ -63,13 +67,13 @@ window.full_screen_show_img = function(e)
   var new_w = 0;
   var new_h = 0;
 
-  // 横向全屏
+  // 横向放大
   if ( window_rate < rate )
   {
     new_w = window_w;
     new_h = window_w / current_rate;
   }
-  // 纵向全屏
+  // 纵向放大
   else
   {
     new_w = window_h * current_rate;
@@ -84,43 +88,44 @@ window.full_screen_show_img = function(e)
   x.height = new_h;
 };
 
-// 添加事件句柄
-( function()
+// 监听事件
+function listen_events()
+{
+  if ( document.getElementById("show_img") == null )
   {
-    if ( document.getElementById("show_img") == null )
-    {
-       return;
-    }
-    
-    var dis = document.getElementById("dis");
-    
-    if ( null == dis )
-    {
-      return;
-    }
-
-    var window_type_list = [ "mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "pageshow", "blur", "wheel", "beforeunload", "error", "pagehide", "keydown", "keypress", "resize", "keyup" ];
-    for ( var i = 0; i < window_type_list.length; ++i )
-    {
-      window.addEventListener( window_type_list[i], full_screen_show_img, true );
-      window.addEventListener( window_type_list[i], full_screen_show_img, false );
-    }
-
-    var document_type_list = ["mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "readystatechange", "blur", "wheel", "keydown", "keypress", "keyup" ];
-    for ( var i = 0; i < document_type_list.length; ++i )
-    {
-      document.addEventListener( document_type_list[i], full_screen_show_img, true );
-      document.addEventListener( document_type_list[i], full_screen_show_img, false );
-    }
-    
-    var dis_type_list = ["load", "wheel", "mousedown", "mouseup", "click"];
-    for ( var i = 0; i < dis_type_list.length; ++i )
-    {
-      dis.addEventListener( dis_type_list[i], full_screen_show_img, true );
-      dis.addEventListener( dis_type_list[i], full_screen_show_img, false );
-    }
+    return;
   }
-)();
+
+  var dis = document.getElementById("dis");
+
+  if ( null == dis )
+  {
+    return;
+  }
+
+  var window_type_list = [ "mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "pageshow", "blur", "wheel", "beforeunload", "error", "pagehide", "keydown", "keypress", "resize", "keyup" ];
+  for ( var i = 0; i < window_type_list.length; ++i )
+  {
+    window.addEventListener( window_type_list[i], full_screen_show_img, true );
+    window.addEventListener( window_type_list[i], full_screen_show_img, false );
+  }
+
+  var document_type_list = ["mousedown", "focus", "mouseup", "click", "beforescriptexecute", "afterscriptexecute", "load", "readystatechange", "blur", "wheel", "keydown", "keypress", "keyup" ];
+  for ( var i = 0; i < document_type_list.length; ++i )
+  {
+    document.addEventListener( document_type_list[i], full_screen_show_img, true );
+    document.addEventListener( document_type_list[i], full_screen_show_img, false );
+  }
+
+  var dis_type_list = ["load", "wheel", "mousedown", "mouseup", "click"];
+  for ( var i = 0; i < dis_type_list.length; ++i )
+  {
+    dis.addEventListener( dis_type_list[i], full_screen_show_img, true );
+    dis.addEventListener( dis_type_list[i], full_screen_show_img, false );
+  }
+}
+
+listen_events();
 
 ///////////////////////////////////////////////
 //
