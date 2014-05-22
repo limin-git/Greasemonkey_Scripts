@@ -17,9 +17,9 @@ var current_rate = 0;
 
 function full_screen_show_img(e)
 {
-  //console.log(e.type);
+  console.log(e.type);
 
-  var x = document.getElementById( "show_img" );
+  var x = document.getElementById( "bigImg" );
 
   if ( x == null )
   {
@@ -43,12 +43,14 @@ function full_screen_show_img(e)
     x.style.position = "absolute";
     x.style.margin = "0px";
     x.style.padding = "0px";
+    //x.style.maxWidth= "200%";
+    //x.style.maxHeight = "200%";
     //console.log( "margin=%s, padding=%s, position=%s", x.style.margin, x.style.padding, x.style.position );
   }
 
   //console.log( "full_screen_show_img - w=%d, h=%d, window_w=%d, window_h=", w, h, window_w, window_h );
 
-  if ( 0 == w || 0 == h ||  window_w == w || window_h == h )
+  if ( window_w == w || window_h == h )
   {
     var target_left = (window_w - w ) / 2 + 'px';
     var target_top = (window_h - h ) / 2 + "px";
@@ -80,6 +82,7 @@ function full_screen_show_img(e)
     new_h = window_h;
   }
 
+  x.title="";
   x.style.width = new_w + "px";
   x.style.height = new_h + "px";
   x.style.left = (window_w - new_w ) / 2 + "px";
@@ -91,14 +94,14 @@ function full_screen_show_img(e)
 // 监听事件
 function listen_events()
 {
-  if ( document.getElementById("show_img") == null )
+  if ( document.getElementById("bigImg") == null )
   {
     return;
   }
 
-  var dis = document.getElementById("dis");
+  var picture = document.getElementsByClassName( "picture" );
 
-  if ( null == dis )
+  if ( null == picture )
   {
     return;
   }
@@ -117,11 +120,11 @@ function listen_events()
     document.addEventListener( document_type_list[i], full_screen_show_img, false );
   }
 
-  var dis_type_list = ["load", "wheel", "mousedown", "mouseup", "click"];
-  for ( var i = 0; i < dis_type_list.length; ++i )
+  var picture_type_list = ["load", "wheel", "mousedown", "mouseup", "click"];
+  for ( var i = 0; i < picture_type_list.length; ++i )
   {
-    dis.addEventListener( dis_type_list[i], full_screen_show_img, true );
-    dis.addEventListener( dis_type_list[i], full_screen_show_img, false );
+    picture.addEventListener( picture_type_list[i], full_screen_show_img, true );
+    picture.addEventListener( picture_type_list[i], full_screen_show_img, false );
   }
 }
 
